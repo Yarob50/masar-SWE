@@ -10,4 +10,6 @@ export class Item {
 
   @Column()
   price: number;
+
+  // hello
 }
