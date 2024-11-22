@@ -5,19 +5,21 @@ import { TestController } from './test.controller';
 import { Test2Controller } from './test2/test2.controller';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 const entitiesPath = __dirname + '/**/*.entity{.ts,.js}';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     UserModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DB_HOST,
       port: 5432,
-      username: 'postgres',
-      password: '',
-      database: 'masar-db',
+      username: process.env.DB_USERNAME, //'postgres',
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       autoLoadEntities: true,
       entities: [entitiesPath],
       synchronize: false,
