@@ -31,7 +31,7 @@ export class AppController {
 
   @Get('/test')
   getTest(): string {
-    return 'this is the test endpoint.';
+    return 'this is the tesdt endpoint.';
   }
 
   @Post('/test')
